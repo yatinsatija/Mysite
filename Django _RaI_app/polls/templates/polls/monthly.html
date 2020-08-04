@@ -1,0 +1,19 @@
+{% extends './base.html' %}
+{% block content %}
+
+    <p id="data1" style="display: none;"> {{ dataval }} </p>
+    <div id="myDiv">
+        <!-- Plotly chart will be drawn inside this DIV -->
+    </div>
+    <script>
+        var yaxisVal = JSON.parse(jQuery('#data1').html());
+        var data = [{
+            x: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+            y: yaxisVal,
+            type: 'bar'
+        }];
+
+        Plotly.newPlot('myDiv', data, {}, { showSendToCloud: true });
+    </script>
+
+{% endblock %}
